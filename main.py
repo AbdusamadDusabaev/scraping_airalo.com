@@ -15,6 +15,7 @@ workbook_page["F1"].value = "Operator Info"
 workbook_page["G1"].value = "Network"
 workbook_page["H1"].value = "Supported Countries"
 workbook_page["I1"].value = "Additional Info"
+index = 1
 
 headers = {"user-agent": UserAgent().chrome}
 url_countries = "https://www.airalo.com/api/v2/countries?sort=asc"
@@ -30,6 +31,7 @@ for country in countries:
     response = requests.get(url=url, headers=headers)
     esim_objects = response.json()["packages"]
     for esim_object in esim_objects:
+        index += 1
         title = esim_object["title"]
         price = f'{esim_object["price"]}$'
         short_info = esim_object["short_info"]
